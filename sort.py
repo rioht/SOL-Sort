@@ -130,9 +130,12 @@ def catalog():
 		for dirName, subdirList, fileList in os.walk(os.getcwd()):
 			fileList = [f for f in fileList if not f[0] == '.']
 			for filename in fileList:
-				if str(foo[i][ii]).lower().endswith('.mp3'):
+				if filename.endswith('.mp3') or filename.endswith('.MP3') \
+				or filename.endswith('.Mp3') or filename.endswith('.mP3'):
 					
 					count = count + 1
+					if count > 20:
+						count = 1
 					y = os.path.join(dirName, filename)
 					af = eyed3.load(y)
 					splitstring = str.split(filename, '_')
